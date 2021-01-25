@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WeidonDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Characters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="IdDeity" Type="int" />
+          <Property Name="IdMythology" Type="int" Nullable="false" />
+          <Property Name="Mythology" Type="varchar" MaxLength="500" />
+          <Property Name="Myth" Type="varchar" MaxLength="500" />
+          <Property Name="IdMyth" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="AlternativeNames" Type="varchar" MaxLength="1000" />
+          <Property Name="Mythology" Type="varchar" MaxLength="500" />
+          <Property Name="IdMythology" Type="int" Nullable="false" />
+          <Property Name="Roles" Type="varchar" MaxLength="500" />
+          <Property Name="Etymology" Type="varchar(max)" />
+          <Property Name="Origin" Type="varchar(max)" />
+          <Property Name="Symbolism" Type="varchar(max)" />
+          <Property Name="EquivalentDeities" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Myth">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="AlternativeNames" Type="varchar" MaxLength="1000" />
+          <Property Name="IdMythology" Type="int" Nullable="false" />
+          <Property Name="Mythology" Type="varchar" MaxLength="500" />
+          <Property Name="Meaning" Type="varchar(max)" />
+          <Property Name="Story" Type="varchar(max)" />
+          <Property Name="Origin" Type="varchar(max)" />
+          <Property Name="EquivalentMyths" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Mythology">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Content" Type="varchar(max)" />
+          <Property Name="Area" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK__Character__IdDei__787EE5A0">
+          <End Role="Deity" Type="Self.Deity" Multiplicity="0..1" />
+          <End Role="Characters" Type="Self.Characters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Characters">
+              <PropertyRef Name="IdDeity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Character__IdMyt__778AC167">
+          <End Role="Myth" Type="Self.Myth" Multiplicity="1" />
+          <End Role="Characters" Type="Self.Characters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Myth">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Characters">
+              <PropertyRef Name="IdMyth" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deity__IdMytholo__74AE54BC">
+          <End Role="Mythology" Type="Self.Mythology" Multiplicity="1" />
+          <End Role="Deity" Type="Self.Deity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mythology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deity">
+              <PropertyRef Name="IdMythology" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mythology">
+          <End Role="Mythology" Type="Self.Mythology" Multiplicity="1" />
+          <End Role="Myth" Type="Self.Myth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mythology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Myth">
+              <PropertyRef Name="IdMythology" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WeidonDbModelStoreContainer">
+          <EntitySet Name="Characters" EntityType="Self.Characters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deity" EntityType="Self.Deity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Myth" EntityType="Self.Myth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mythology" EntityType="Self.Mythology" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Character__IdDei__787EE5A0" Association="Self.FK__Character__IdDei__787EE5A0">
+            <End Role="Deity" EntitySet="Deity" />
+            <End Role="Characters" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Character__IdMyt__778AC167" Association="Self.FK__Character__IdMyt__778AC167">
+            <End Role="Myth" EntitySet="Myth" />
+            <End Role="Characters" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deity__IdMytholo__74AE54BC" Association="Self.FK__Deity__IdMytholo__74AE54BC">
+            <End Role="Mythology" EntitySet="Mythology" />
+            <End Role="Deity" EntitySet="Deity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mythology" Association="Self.FK_Mythology">
+            <End Role="Mythology" EntitySet="Mythology" />
+            <End Role="Myth" EntitySet="Myth" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WeidonDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Characters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdDeity" Type="Int32" />
+          <Property Name="IdMythology" Type="Int32" Nullable="false" />
+          <Property Name="Mythology" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Myth" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IdMyth" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Deity" Relationship="Self.FK__Character__IdDei__787EE5A0" FromRole="Characters" ToRole="Deity" />
+        </EntityType>
+        <EntityType Name="Deity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AlternativeNames" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Mythology" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IdMythology" Type="Int32" Nullable="false" />
+          <Property Name="Roles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Etymology" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Origin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Symbolism" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EquivalentDeities" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Characters" Relationship="Self.FK__Character__IdDei__787EE5A0" FromRole="Deity" ToRole="Characters" />
+        </EntityType>
+        <EntityType Name="Myth">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AlternativeNames" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IdMythology" Type="Int32" Nullable="false" />
+          <Property Name="Mythology" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Meaning" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Story" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Origin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EquivalentMyths" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Characters" Relationship="Self.FK__Character__IdMyt__778AC167" FromRole="Myth" ToRole="Characters" />
+        </EntityType>
+        <EntityType Name="Mythology">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Area" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Deity" Relationship="Self.FK__Deity__IdMytholo__74AE54BC" FromRole="Mythology" ToRole="Deity" />
+          <NavigationProperty Name="Myth" Relationship="Self.FK_Mythology" FromRole="Mythology" ToRole="Myth" />
+        </EntityType>
+        <Association Name="FK__Character__IdDei__787EE5A0">
+          <End Role="Deity" Type="Self.Deity" Multiplicity="0..1" />
+          <End Role="Characters" Type="Self.Characters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Characters">
+              <PropertyRef Name="IdDeity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Character__IdMyt__778AC167">
+          <End Role="Myth" Type="Self.Myth" Multiplicity="1" />
+          <End Role="Characters" Type="Self.Characters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Myth">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Characters">
+              <PropertyRef Name="IdMyth" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deity__IdMytholo__74AE54BC">
+          <End Role="Mythology" Type="Self.Mythology" Multiplicity="1" />
+          <End Role="Deity" Type="Self.Deity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mythology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deity">
+              <PropertyRef Name="IdMythology" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mythology">
+          <End Role="Mythology" Type="Self.Mythology" Multiplicity="1" />
+          <End Role="Myth" Type="Self.Myth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mythology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Myth">
+              <PropertyRef Name="IdMythology" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WeidonDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Characters" EntityType="Self.Characters" />
+          <EntitySet Name="Deity" EntityType="Self.Deity" />
+          <EntitySet Name="Myth" EntityType="Self.Myth" />
+          <EntitySet Name="Mythology" EntityType="Self.Mythology" />
+          <AssociationSet Name="FK__Character__IdDei__787EE5A0" Association="Self.FK__Character__IdDei__787EE5A0">
+            <End Role="Deity" EntitySet="Deity" />
+            <End Role="Characters" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Character__IdMyt__778AC167" Association="Self.FK__Character__IdMyt__778AC167">
+            <End Role="Myth" EntitySet="Myth" />
+            <End Role="Characters" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deity__IdMytholo__74AE54BC" Association="Self.FK__Deity__IdMytholo__74AE54BC">
+            <End Role="Mythology" EntitySet="Mythology" />
+            <End Role="Deity" EntitySet="Deity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mythology" Association="Self.FK_Mythology">
+            <End Role="Mythology" EntitySet="Mythology" />
+            <End Role="Myth" EntitySet="Myth" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WeidonDbModelStoreContainer" CdmEntityContainer="WeidonDbEntities">
+          <EntitySetMapping Name="Characters">
+            <EntityTypeMapping TypeName="WeidonDbModel.Characters">
+              <MappingFragment StoreEntitySet="Characters">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdDeity" ColumnName="IdDeity" />
+                <ScalarProperty Name="IdMythology" ColumnName="IdMythology" />
+                <ScalarProperty Name="Mythology" ColumnName="Mythology" />
+                <ScalarProperty Name="Myth" ColumnName="Myth" />
+                <ScalarProperty Name="IdMyth" ColumnName="IdMyth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deity">
+            <EntityTypeMapping TypeName="WeidonDbModel.Deity">
+              <MappingFragment StoreEntitySet="Deity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AlternativeNames" ColumnName="AlternativeNames" />
+                <ScalarProperty Name="Mythology" ColumnName="Mythology" />
+                <ScalarProperty Name="IdMythology" ColumnName="IdMythology" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="Etymology" ColumnName="Etymology" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="Symbolism" ColumnName="Symbolism" />
+                <ScalarProperty Name="EquivalentDeities" ColumnName="EquivalentDeities" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Myth">
+            <EntityTypeMapping TypeName="WeidonDbModel.Myth">
+              <MappingFragment StoreEntitySet="Myth">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AlternativeNames" ColumnName="AlternativeNames" />
+                <ScalarProperty Name="IdMythology" ColumnName="IdMythology" />
+                <ScalarProperty Name="Mythology" ColumnName="Mythology" />
+                <ScalarProperty Name="Meaning" ColumnName="Meaning" />
+                <ScalarProperty Name="Story" ColumnName="Story" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="EquivalentMyths" ColumnName="EquivalentMyths" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mythology">
+            <EntityTypeMapping TypeName="WeidonDbModel.Mythology">
+              <MappingFragment StoreEntitySet="Mythology">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

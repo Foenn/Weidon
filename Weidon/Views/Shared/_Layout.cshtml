@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("The Weidon", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item dropdown dropdown-toggle">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Greek Mythology
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("List of Greek deities", "Index", "ListDeities", new { IdMythology = 1 }, new { @class = "dropdown-item"})</li>
+                            <li>@Html.ActionLink("List of Greek myths", "Index", "ListMyths", new { IdMythology = 1 }, new { @class = "dropdown-item"})</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Roman Mythology
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("List of Roman deities", "Index", "ListDeities", new { IdMythology = 2 }, new { @class = "dropdown-item"})</li>
+                            <li>@Html.ActionLink("List of Roman myths", "Index", "ListMyths", new { IdMythology = 2 }, new { @class = "dropdown-item"})</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Norse Mythology
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("List of Norse deities", "Index", "ListDeities", new { IdMythology = 3 }, new { @class = "dropdown-item"})</li>
+                            <li>@Html.ActionLink("List of Norse myths", "Index", "ListMyths", new { IdMythology = 3 }, new { @class = "dropdown-item"})</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Slavic Mythology
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("List of Slavic deities", "Index", "ListDeities", new { IdMythology = 4 }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("List of Slavic myths", "Index", "ListMyths", new { IdMythology = 4 }, new { @class = "dropdown-item" })</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Celtic Mythology
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("List of Gaulish deities", "Index", "ListDeities", new { IdMythology = 5 }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("List of Gaulish myths", "Index", "ListMyths", new { IdMythology = 5 }, new { @class = "dropdown-item" })</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("List of Irish deities", "Index", "ListDeities", new { IdMythology = 6 }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("List of Irish myths", "Index", "ListMyths", new { IdMythology = 6 }, new { @class = "dropdown-item" })</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Proto Indo-European Mythology
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("List of Proto Indo-European deities", "Index", "ListDeities", new { IdMythology = 7 }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("List of Proto Indo-European myths", "Index", "ListMyths", new { IdMythology = 7 }, new { @class = "dropdown-item" })</li>
+                        </ul>
+                    </li>
+                </ul>
+                @*<ul class="nav navbar-nav navbar-right">
+                    <li class="k-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><asp:Literal runat="server" Text="<%$Resources:Resources, Language%>" /><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="javascript:__doPostBack('en-us','')">English</a></li>
+                            <li><a href="#" onclick="javascript:__doPostBack('fr','')">français</a></li>
+                            <li><a href="#" onclick="javascript:__doPostBack('es','')">Español</a></li>
+                        </ul>
+                    </li>
+                </ul>*@
+
+                @*</ul>
+        @Html.Partial("_LoginPartial")*@
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

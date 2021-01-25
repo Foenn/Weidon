@@ -1,0 +1,32 @@
+﻿@model Weidon.Models.MythViewModel
+@{
+    ViewBag.Title = "List Myths";
+}
+
+@*<h2>@Model.Mythology</h2>*@
+
+<p>@Html.ActionLink(@Model.Mythology, "Infos", "Mythology", new { name = Model.Mythology }, new { @class = "btn btn-primary" })</p>
+
+<p>@Html.ActionLink("List of deities", "Index", "ListDeities", new { IdMythology = Model.IdMythology }, new { @class = "dropdown-item" })</p>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Alternative Names</th>
+            <th scope="col">Meaning</th>
+            <th scope="col">Equivalent Myths</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.ListIds.Count; i++)
+        {
+            <tr>
+                <th scope="row">@Html.ActionLink(Model.ListNames[i], "Index", "Myth", new { name = Model.ListNames[i] }, new { @class = "myth-link" })</th>
+                <td>@Model.ListAlternativeNames[i]</td>
+                <td>@Model.ListMeanings[i]</td>
+                <td>@Model.ListEquivalentMyths[i]</td>
+            </tr>
+        }
+    </tbody>
+</table>

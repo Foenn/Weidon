@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WeidonDbModelStoreContainer" CdmEntityContainer="WeidonDbEntities">
+    <EntitySetMapping Name="Characters">
+      <EntityTypeMapping TypeName="WeidonDbModel.Characters">
+        <MappingFragment StoreEntitySet="Characters">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdDeity" ColumnName="IdDeity" />
+          <ScalarProperty Name="IdMythology" ColumnName="IdMythology" />
+          <ScalarProperty Name="Mythology" ColumnName="Mythology" />
+          <ScalarProperty Name="Myth" ColumnName="Myth" />
+          <ScalarProperty Name="IdMyth" ColumnName="IdMyth" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Deity">
+      <EntityTypeMapping TypeName="WeidonDbModel.Deity">
+        <MappingFragment StoreEntitySet="Deity">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AlternativeNames" ColumnName="AlternativeNames" />
+          <ScalarProperty Name="Mythology" ColumnName="Mythology" />
+          <ScalarProperty Name="IdMythology" ColumnName="IdMythology" />
+          <ScalarProperty Name="Roles" ColumnName="Roles" />
+          <ScalarProperty Name="Etymology" ColumnName="Etymology" />
+          <ScalarProperty Name="Origin" ColumnName="Origin" />
+          <ScalarProperty Name="Symbolism" ColumnName="Symbolism" />
+          <ScalarProperty Name="EquivalentDeities" ColumnName="EquivalentDeities" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Myth">
+      <EntityTypeMapping TypeName="WeidonDbModel.Myth">
+        <MappingFragment StoreEntitySet="Myth">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AlternativeNames" ColumnName="AlternativeNames" />
+          <ScalarProperty Name="IdMythology" ColumnName="IdMythology" />
+          <ScalarProperty Name="Mythology" ColumnName="Mythology" />
+          <ScalarProperty Name="Meaning" ColumnName="Meaning" />
+          <ScalarProperty Name="Story" ColumnName="Story" />
+          <ScalarProperty Name="Origin" ColumnName="Origin" />
+          <ScalarProperty Name="EquivalentMyths" ColumnName="EquivalentMyths" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mythology">
+      <EntityTypeMapping TypeName="WeidonDbModel.Mythology">
+        <MappingFragment StoreEntitySet="Mythology">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

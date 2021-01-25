@@ -1,0 +1,12 @@
+D:\Louis-Elliot Pidoux\Desktop\Truc\The Weidon\Data\bin\Debug\Data.dll
+D:\Louis-Elliot Pidoux\Desktop\Truc\The Weidon\Data\bin\Debug\Data.pdb
+D:\Louis-Elliot Pidoux\Desktop\Truc\The Weidon\Data\obj\Debug\Data.csprojAssemblyReference.cache
+D:\Louis-Elliot Pidoux\Desktop\Truc\The Weidon\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
+D:\Louis-Elliot Pidoux\Desktop\Truc\The Weidon\Data\obj\Debug\Data.dll
+D:\Louis-Elliot Pidoux\Desktop\Truc\The Weidon\Data\obj\Debug\Data.pdb
+D:\Louis-Elliot Pidoux\Desktop\Truc\The Weidon\Data\bin\Debug\Data.dll.config
+D:\Louis-Elliot Pidoux\Desktop\Truc\The Weidon\Data\bin\Debug\EntityFramework.dll
+D:\Louis-Elliot Pidoux\Desktop\Truc\The Weidon\Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Louis-Elliot Pidoux\Desktop\Truc\The Weidon\Data\bin\Debug\EntityFramework.xml
+D:\Louis-Elliot Pidoux\Desktop\Truc\The Weidon\Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Louis-Elliot Pidoux\Desktop\Truc\The Weidon\Data\obj\Debug\Data.csproj.CopyComplete

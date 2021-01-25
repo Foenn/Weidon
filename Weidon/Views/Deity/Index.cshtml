@@ -1,0 +1,29 @@
+﻿@model Weidon.Models.DeityViewModel
+@{
+    ViewBag.Title = "Deity";
+}
+
+<h2>@Model.Name</h2>
+
+<p>@Html.ActionLink(Model.Mythology, "Infos", "Mythology", new { name = Model.Mythology }, new { @class = "btn btn-primary" })</p>
+
+<p>@Html.ActionLink("List of myths", "Index", "ListMyths", new { IdMythology = Model.IdMythology }, new { @class = "dropdown-item" })</p>
+
+<p>@Html.ActionLink("List of deities", "Index", "ListDeities", new { IdMythology = Model.IdMythology }, new { @class = "dropdown-item" })</p>
+
+<p>@Model.Name</p>
+
+<p>@Model.AlternativeNames</p>
+
+<p>@Model.Roles</p>
+
+<p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Equivalent deities in other mythologies
+    </a>
+</p>
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        <p>@Model.EquivalentDeities</p>
+    </div>
+</div>
