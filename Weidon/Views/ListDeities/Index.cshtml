@@ -25,7 +25,10 @@
                 <th scope="row">@Html.ActionLink(Model.ListNames[i], "Index", "Deity", new { name = Model.ListNames[i] }, new { @class = "deity-link" })</th>
                 <td>@Model.ListRoles[i]</td>
                 <td>@Model.ListAlternativeNames[i]</td>
-                <td>@Model.ListEquivalentDeities[i]</td>
+                <td>
+                @foreach (var equivalentDeity in Model.ListEquivalentDeities[i]) {
+                    <div>@equivalentDeity.EquivalentDeityName</div>
+                }
             </tr>
         }
     </tbody>

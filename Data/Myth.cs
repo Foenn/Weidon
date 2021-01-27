@@ -18,6 +18,8 @@ namespace Data
         public Myth()
         {
             this.Characters = new HashSet<Characters>();
+            this.EquivalentMyths1 = new HashSet<EquivalentMyths>();
+            this.MythImages = new HashSet<MythImages>();
         }
     
         public int Id { get; set; }
@@ -32,5 +34,10 @@ namespace Data
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Characters> Characters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EquivalentMyths> EquivalentMyths1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MythImages> MythImages { get; set; }
+        public virtual Mythology Mythology1 { get; set; }
     }
 }

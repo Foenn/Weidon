@@ -26,7 +26,35 @@
           <ScalarProperty Name="Etymology" ColumnName="Etymology" />
           <ScalarProperty Name="Origin" ColumnName="Origin" />
           <ScalarProperty Name="Symbolism" ColumnName="Symbolism" />
-          <ScalarProperty Name="EquivalentDeities" ColumnName="EquivalentDeities" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeityImages">
+      <EntityTypeMapping TypeName="WeidonDbModel.DeityImages">
+        <MappingFragment StoreEntitySet="DeityImages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdDeity" ColumnName="IdDeity" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquivalentDeities">
+      <EntityTypeMapping TypeName="WeidonDbModel.EquivalentDeities">
+        <MappingFragment StoreEntitySet="EquivalentDeities">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdDeity" ColumnName="IdDeity" />
+          <ScalarProperty Name="EquivalentDeityName" ColumnName="EquivalentDeityName" />
+          <ScalarProperty Name="EquivalentDeityId" ColumnName="EquivalentDeityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquivalentMyths">
+      <EntityTypeMapping TypeName="WeidonDbModel.EquivalentMyths">
+        <MappingFragment StoreEntitySet="EquivalentMyths">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdMyth" ColumnName="IdMyth" />
+          <ScalarProperty Name="EquivalentMyth" ColumnName="EquivalentMyth" />
+          <ScalarProperty Name="EquivalentMythId" ColumnName="EquivalentMythId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -45,6 +73,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="MythImages">
+      <EntityTypeMapping TypeName="WeidonDbModel.MythImages">
+        <MappingFragment StoreEntitySet="MythImages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdMyth" ColumnName="IdMyth" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Mythology">
       <EntityTypeMapping TypeName="WeidonDbModel.Mythology">
         <MappingFragment StoreEntitySet="Mythology">
@@ -52,6 +89,15 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Content" ColumnName="Content" />
           <ScalarProperty Name="Area" ColumnName="Area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MythologyImages">
+      <EntityTypeMapping TypeName="WeidonDbModel.MythologyImages">
+        <MappingFragment StoreEntitySet="MythologyImages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdMythology" ColumnName="IdMythology" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

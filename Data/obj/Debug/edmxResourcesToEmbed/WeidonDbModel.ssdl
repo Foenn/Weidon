@@ -25,7 +25,32 @@
     <Property Name="Etymology" Type="varchar(max)" />
     <Property Name="Origin" Type="varchar(max)" />
     <Property Name="Symbolism" Type="varchar(max)" />
-    <Property Name="EquivalentDeities" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="DeityImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdDeity" Type="int" Nullable="false" />
+    <Property Name="ImagePath" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="EquivalentDeities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdDeity" Type="int" Nullable="false" />
+    <Property Name="EquivalentDeityName" Type="varchar" MaxLength="50" />
+    <Property Name="EquivalentDeityId" Type="int" />
+  </EntityType>
+  <EntityType Name="EquivalentMyths">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdMyth" Type="int" Nullable="false" />
+    <Property Name="EquivalentMyth" Type="varchar(max)" />
+    <Property Name="EquivalentMythId" Type="int" />
   </EntityType>
   <EntityType Name="Myth">
     <Key>
@@ -41,6 +66,14 @@
     <Property Name="Origin" Type="varchar(max)" />
     <Property Name="EquivalentMyths" Type="varchar" MaxLength="500" />
   </EntityType>
+  <EntityType Name="MythImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdMyth" Type="int" Nullable="false" />
+    <Property Name="ImagePath" Type="varchar(max)" />
+  </EntityType>
   <EntityType Name="Mythology">
     <Key>
       <PropertyRef Name="Id" />
@@ -49,6 +82,14 @@
     <Property Name="Name" Type="varchar" MaxLength="100" />
     <Property Name="Content" Type="varchar(max)" />
     <Property Name="Area" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="MythologyImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdMythology" Type="int" Nullable="false" />
+    <Property Name="ImagePath" Type="varchar(max)" />
   </EntityType>
   <Association Name="FK__Character__IdDei__787EE5A0">
     <End Role="Deity" Type="Self.Deity" Multiplicity="0..1" />
@@ -86,6 +127,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_DeityImages_Deity">
+    <End Role="Deity" Type="Self.Deity" Multiplicity="1" />
+    <End Role="DeityImages" Type="Self.DeityImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeityImages">
+        <PropertyRef Name="IdDeity" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquivalentDeities_Deity">
+    <End Role="Deity" Type="Self.Deity" Multiplicity="1" />
+    <End Role="EquivalentDeities" Type="Self.EquivalentDeities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EquivalentDeities">
+        <PropertyRef Name="IdDeity" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquivalentMyths_Myth">
+    <End Role="Myth" Type="Self.Myth" Multiplicity="1" />
+    <End Role="EquivalentMyths" Type="Self.EquivalentMyths" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Myth">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EquivalentMyths">
+        <PropertyRef Name="IdMyth" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MythImages_Myth">
+    <End Role="Myth" Type="Self.Myth" Multiplicity="1" />
+    <End Role="MythImages" Type="Self.MythImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Myth">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MythImages">
+        <PropertyRef Name="IdMyth" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Mythology">
     <End Role="Mythology" Type="Self.Mythology" Multiplicity="1" />
     <End Role="Myth" Type="Self.Myth" Multiplicity="*" />
@@ -98,11 +187,28 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_MythologyImages_Mythology">
+    <End Role="Mythology" Type="Self.Mythology" Multiplicity="1" />
+    <End Role="MythologyImages" Type="Self.MythologyImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mythology">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MythologyImages">
+        <PropertyRef Name="IdMythology" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="WeidonDbModelStoreContainer">
     <EntitySet Name="Characters" EntityType="Self.Characters" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Deity" EntityType="Self.Deity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeityImages" EntityType="Self.DeityImages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquivalentDeities" EntityType="Self.EquivalentDeities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquivalentMyths" EntityType="Self.EquivalentMyths" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Myth" EntityType="Self.Myth" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MythImages" EntityType="Self.MythImages" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mythology" EntityType="Self.Mythology" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MythologyImages" EntityType="Self.MythologyImages" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Character__IdDei__787EE5A0" Association="Self.FK__Character__IdDei__787EE5A0">
       <End Role="Deity" EntitySet="Deity" />
       <End Role="Characters" EntitySet="Characters" />
@@ -115,9 +221,29 @@
       <End Role="Mythology" EntitySet="Mythology" />
       <End Role="Deity" EntitySet="Deity" />
     </AssociationSet>
+    <AssociationSet Name="FK_DeityImages_Deity" Association="Self.FK_DeityImages_Deity">
+      <End Role="Deity" EntitySet="Deity" />
+      <End Role="DeityImages" EntitySet="DeityImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquivalentDeities_Deity" Association="Self.FK_EquivalentDeities_Deity">
+      <End Role="Deity" EntitySet="Deity" />
+      <End Role="EquivalentDeities" EntitySet="EquivalentDeities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquivalentMyths_Myth" Association="Self.FK_EquivalentMyths_Myth">
+      <End Role="Myth" EntitySet="Myth" />
+      <End Role="EquivalentMyths" EntitySet="EquivalentMyths" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MythImages_Myth" Association="Self.FK_MythImages_Myth">
+      <End Role="Myth" EntitySet="Myth" />
+      <End Role="MythImages" EntitySet="MythImages" />
+    </AssociationSet>
     <AssociationSet Name="FK_Mythology" Association="Self.FK_Mythology">
       <End Role="Mythology" EntitySet="Mythology" />
       <End Role="Myth" EntitySet="Myth" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MythologyImages_Mythology" Association="Self.FK_MythologyImages_Mythology">
+      <End Role="Mythology" EntitySet="Mythology" />
+      <End Role="MythologyImages" EntitySet="MythologyImages" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

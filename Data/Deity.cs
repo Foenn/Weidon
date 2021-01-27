@@ -18,6 +18,8 @@ namespace Data
         public Deity()
         {
             this.Characters = new HashSet<Characters>();
+            this.DeityImages = new HashSet<DeityImages>();
+            this.EquivalentDeities = new HashSet<EquivalentDeities>();
         }
     
         public int Id { get; set; }
@@ -29,9 +31,13 @@ namespace Data
         public string Etymology { get; set; }
         public string Origin { get; set; }
         public string Symbolism { get; set; }
-        public string EquivalentDeities { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Characters> Characters { get; set; }
+        public virtual Mythology Mythology1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeityImages> DeityImages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EquivalentDeities> EquivalentDeities { get; set; }
     }
 }

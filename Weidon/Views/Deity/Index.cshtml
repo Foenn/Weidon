@@ -24,6 +24,9 @@
 </p>
 <div class="collapse" id="collapseExample">
     <div class="card card-body">
-        <p>@Model.EquivalentDeities</p>
-    </div>
+        @foreach (var equivalentDeity in Model.EquivalentDeities)
+        {
+            <p>@equivalentDeity.EquivalentDeityName</p>
+        }
+        </div>
 </div>
