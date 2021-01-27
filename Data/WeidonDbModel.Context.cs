@@ -27,7 +27,12 @@ namespace Data
     
         public virtual DbSet<Characters> Characters { get; set; }
         public virtual DbSet<Deity> Deity { get; set; }
+        public virtual DbSet<DeityImages> DeityImages { get; set; }
+        public virtual DbSet<EquivalentDeities> EquivalentDeities { get; set; }
+        public virtual DbSet<EquivalentMyths> EquivalentMyths { get; set; }
         public virtual DbSet<Myth> Myth { get; set; }
+        public virtual DbSet<MythImages> MythImages { get; set; }
         public virtual DbSet<Mythology> Mythology { get; set; }
+        public virtual DbSet<MythologyImages> MythologyImages { get; set; }
     }
 }

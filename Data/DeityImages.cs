@@ -12,17 +12,12 @@ namespace Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Characters
+    public partial class DeityImages
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public Nullable<int> IdDeity { get; set; }
-        public int IdMythology { get; set; }
-        public string Mythology { get; set; }
-        public string Myth { get; set; }
-        public int IdMyth { get; set; }
+        public int IdDeity { get; set; }
+        public string ImagePath { get; set; }
     
         public virtual Deity Deity { get; set; }
-        public virtual Myth Myth1 { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace Data
         {
             this.Deity = new HashSet<Deity>();
             this.Myth = new HashSet<Myth>();
+            this.MythologyImages = new HashSet<MythologyImages>();
         }
     
         public int Id { get; set; }
@@ -30,5 +31,7 @@ namespace Data
         public virtual ICollection<Deity> Deity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Myth> Myth { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MythologyImages> MythologyImages { get; set; }
     }
 }

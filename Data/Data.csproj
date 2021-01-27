@@ -56,10 +56,25 @@
     <Compile Include="Deity.cs">
       <DependentUpon>WeidonDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DeityImages.cs">
+      <DependentUpon>WeidonDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EquivalentDeities.cs">
+      <DependentUpon>WeidonDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EquivalentMyths.cs">
+      <DependentUpon>WeidonDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Myth.cs">
       <DependentUpon>WeidonDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="MythImages.cs">
+      <DependentUpon>WeidonDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Mythology.cs">
+      <DependentUpon>WeidonDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MythologyImages.cs">
       <DependentUpon>WeidonDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

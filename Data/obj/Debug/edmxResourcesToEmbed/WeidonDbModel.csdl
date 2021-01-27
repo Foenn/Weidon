@@ -12,6 +12,7 @@
     <Property Name="Myth" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="IdMyth" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Deity" Relationship="Self.FK__Character__IdDei__787EE5A0" FromRole="Characters" ToRole="Deity" />
+    <NavigationProperty Name="Myth1" Relationship="Self.FK__Character__IdMyt__778AC167" FromRole="Characters" ToRole="Myth" />
   </EntityType>
   <EntityType Name="Deity">
     <Key>
@@ -26,8 +27,39 @@
     <Property Name="Etymology" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Origin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Symbolism" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="EquivalentDeities" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Characters" Relationship="Self.FK__Character__IdDei__787EE5A0" FromRole="Deity" ToRole="Characters" />
+    <NavigationProperty Name="Mythology1" Relationship="Self.FK__Deity__IdMytholo__74AE54BC" FromRole="Deity" ToRole="Mythology" />
+    <NavigationProperty Name="DeityImages" Relationship="Self.FK_DeityImages_Deity" FromRole="Deity" ToRole="DeityImages" />
+    <NavigationProperty Name="EquivalentDeities" Relationship="Self.FK_EquivalentDeities_Deity" FromRole="Deity" ToRole="EquivalentDeities" />
+  </EntityType>
+  <EntityType Name="DeityImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDeity" Type="Int32" Nullable="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Deity" Relationship="Self.FK_DeityImages_Deity" FromRole="DeityImages" ToRole="Deity" />
+  </EntityType>
+  <EntityType Name="EquivalentDeities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDeity" Type="Int32" Nullable="false" />
+    <Property Name="EquivalentDeityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EquivalentDeityId" Type="Int32" />
+    <NavigationProperty Name="Deity" Relationship="Self.FK_EquivalentDeities_Deity" FromRole="EquivalentDeities" ToRole="Deity" />
+  </EntityType>
+  <EntityType Name="EquivalentMyths">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdMyth" Type="Int32" Nullable="false" />
+    <Property Name="EquivalentMyth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EquivalentMythId" Type="Int32" />
+    <NavigationProperty Name="Myth" Relationship="Self.FK_EquivalentMyths_Myth" FromRole="EquivalentMyths" ToRole="Myth" />
   </EntityType>
   <EntityType Name="Myth">
     <Key>
@@ -43,6 +75,18 @@
     <Property Name="Origin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="EquivalentMyths" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Characters" Relationship="Self.FK__Character__IdMyt__778AC167" FromRole="Myth" ToRole="Characters" />
+    <NavigationProperty Name="EquivalentMyths1" Relationship="Self.FK_EquivalentMyths_Myth" FromRole="Myth" ToRole="EquivalentMyths" />
+    <NavigationProperty Name="MythImages" Relationship="Self.FK_MythImages_Myth" FromRole="Myth" ToRole="MythImages" />
+    <NavigationProperty Name="Mythology1" Relationship="Self.FK_Mythology" FromRole="Myth" ToRole="Mythology" />
+  </EntityType>
+  <EntityType Name="MythImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdMyth" Type="Int32" Nullable="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Myth" Relationship="Self.FK_MythImages_Myth" FromRole="MythImages" ToRole="Myth" />
   </EntityType>
   <EntityType Name="Mythology">
     <Key>
@@ -54,6 +98,16 @@
     <Property Name="Area" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Deity" Relationship="Self.FK__Deity__IdMytholo__74AE54BC" FromRole="Mythology" ToRole="Deity" />
     <NavigationProperty Name="Myth" Relationship="Self.FK_Mythology" FromRole="Mythology" ToRole="Myth" />
+    <NavigationProperty Name="MythologyImages" Relationship="Self.FK_MythologyImages_Mythology" FromRole="Mythology" ToRole="MythologyImages" />
+  </EntityType>
+  <EntityType Name="MythologyImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdMythology" Type="Int32" Nullable="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Mythology" Relationship="Self.FK_MythologyImages_Mythology" FromRole="MythologyImages" ToRole="Mythology" />
   </EntityType>
   <Association Name="FK__Character__IdDei__787EE5A0">
     <End Role="Deity" Type="Self.Deity" Multiplicity="0..1" />
@@ -91,6 +145,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_DeityImages_Deity">
+    <End Role="Deity" Type="Self.Deity" Multiplicity="1" />
+    <End Role="DeityImages" Type="Self.DeityImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeityImages">
+        <PropertyRef Name="IdDeity" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquivalentDeities_Deity">
+    <End Role="Deity" Type="Self.Deity" Multiplicity="1" />
+    <End Role="EquivalentDeities" Type="Self.EquivalentDeities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EquivalentDeities">
+        <PropertyRef Name="IdDeity" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquivalentMyths_Myth">
+    <End Role="Myth" Type="Self.Myth" Multiplicity="1" />
+    <End Role="EquivalentMyths" Type="Self.EquivalentMyths" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Myth">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EquivalentMyths">
+        <PropertyRef Name="IdMyth" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MythImages_Myth">
+    <End Role="Myth" Type="Self.Myth" Multiplicity="1" />
+    <End Role="MythImages" Type="Self.MythImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Myth">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MythImages">
+        <PropertyRef Name="IdMyth" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Mythology">
     <End Role="Mythology" Type="Self.Mythology" Multiplicity="1" />
     <End Role="Myth" Type="Self.Myth" Multiplicity="*" />
@@ -103,11 +205,28 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_MythologyImages_Mythology">
+    <End Role="Mythology" Type="Self.Mythology" Multiplicity="1" />
+    <End Role="MythologyImages" Type="Self.MythologyImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mythology">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MythologyImages">
+        <PropertyRef Name="IdMythology" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="WeidonDbEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Characters" EntityType="Self.Characters" />
     <EntitySet Name="Deity" EntityType="Self.Deity" />
+    <EntitySet Name="DeityImages" EntityType="Self.DeityImages" />
+    <EntitySet Name="EquivalentDeities" EntityType="Self.EquivalentDeities" />
+    <EntitySet Name="EquivalentMyths" EntityType="Self.EquivalentMyths" />
     <EntitySet Name="Myth" EntityType="Self.Myth" />
+    <EntitySet Name="MythImages" EntityType="Self.MythImages" />
     <EntitySet Name="Mythology" EntityType="Self.Mythology" />
+    <EntitySet Name="MythologyImages" EntityType="Self.MythologyImages" />
     <AssociationSet Name="FK__Character__IdDei__787EE5A0" Association="Self.FK__Character__IdDei__787EE5A0">
       <End Role="Deity" EntitySet="Deity" />
       <End Role="Characters" EntitySet="Characters" />
@@ -120,9 +239,29 @@
       <End Role="Mythology" EntitySet="Mythology" />
       <End Role="Deity" EntitySet="Deity" />
     </AssociationSet>
+    <AssociationSet Name="FK_DeityImages_Deity" Association="Self.FK_DeityImages_Deity">
+      <End Role="Deity" EntitySet="Deity" />
+      <End Role="DeityImages" EntitySet="DeityImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquivalentDeities_Deity" Association="Self.FK_EquivalentDeities_Deity">
+      <End Role="Deity" EntitySet="Deity" />
+      <End Role="EquivalentDeities" EntitySet="EquivalentDeities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquivalentMyths_Myth" Association="Self.FK_EquivalentMyths_Myth">
+      <End Role="Myth" EntitySet="Myth" />
+      <End Role="EquivalentMyths" EntitySet="EquivalentMyths" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MythImages_Myth" Association="Self.FK_MythImages_Myth">
+      <End Role="Myth" EntitySet="Myth" />
+      <End Role="MythImages" EntitySet="MythImages" />
+    </AssociationSet>
     <AssociationSet Name="FK_Mythology" Association="Self.FK_Mythology">
       <End Role="Mythology" EntitySet="Mythology" />
       <End Role="Myth" EntitySet="Myth" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MythologyImages_Mythology" Association="Self.FK_MythologyImages_Mythology">
+      <End Role="Mythology" EntitySet="Mythology" />
+      <End Role="MythologyImages" EntitySet="MythologyImages" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

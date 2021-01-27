@@ -4,15 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="caa187746a3b455ba70fa8675fe86d67" Name="Diagram1">
-        <EntityTypeShape EntityType="WeidonDbModel.Characters" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WeidonDbModel.Deity" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="WeidonDbModel.Myth" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="WeidonDbModel.Mythology" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+      <Diagram DiagramId="f0a79f61a1bc448ea5516cb9caa1e09c" Name="Diagram1">
+        <EntityTypeShape EntityType="WeidonDbModel.Characters" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeidonDbModel.Deity" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeidonDbModel.DeityImages" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeidonDbModel.EquivalentDeities" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeidonDbModel.EquivalentMyths" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeidonDbModel.Myth" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeidonDbModel.MythImages" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeidonDbModel.Mythology" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeidonDbModel.MythologyImages" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
         <AssociationConnector Association="WeidonDbModel.FK__Character__IdDei__787EE5A0" ManuallyRouted="false" />
         <AssociationConnector Association="WeidonDbModel.FK__Character__IdMyt__778AC167" ManuallyRouted="false" />
         <AssociationConnector Association="WeidonDbModel.FK__Deity__IdMytholo__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="WeidonDbModel.FK_DeityImages_Deity" ManuallyRouted="false" />
+        <AssociationConnector Association="WeidonDbModel.FK_EquivalentDeities_Deity" ManuallyRouted="false" />
+        <AssociationConnector Association="WeidonDbModel.FK_EquivalentMyths_Myth" ManuallyRouted="false" />
+        <AssociationConnector Association="WeidonDbModel.FK_MythImages_Myth" ManuallyRouted="false" />
         <AssociationConnector Association="WeidonDbModel.FK_Mythology" ManuallyRouted="false" />
+        <AssociationConnector Association="WeidonDbModel.FK_MythologyImages_Mythology" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
