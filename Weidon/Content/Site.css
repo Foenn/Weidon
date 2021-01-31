@@ -47,8 +47,34 @@ textarea {
     text-decoration: none;
 }
 
-.logo-small {
-    /*max-width: 100%;
-    height: auto;*/
-    object-fit: contain;
+.dropdown-menu {
+    background-color: #222222;
 }
+
+.dropdown-menu > li > a {
+    color: #fff;
+}
+
+.margin-top-10 {
+    margin-top: 10px;  
+}
+
+.font-size-15 {
+    font-size: 15px;
+}
+
+/*.center-li{
+    display: inline;
+}*/
+
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}
+
+
