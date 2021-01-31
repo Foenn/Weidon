@@ -46,3 +46,9 @@ textarea {
 .myth-link:visited {
     text-decoration: none;
 }
+
+.logo-small {
+    /*max-width: 100%;
+    height: auto;*/
+    object-fit: contain;
+}
