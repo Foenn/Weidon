@@ -3,21 +3,31 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>The Weidon</title>
+    <link href="~/Content/Images/Logo_Icon.ico" rel="shortcut icon" type="image/x-icon" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-md">
+        @*<div class="container">*@
+        <a href="@Url.Action("Index", "Home")" title="List View" class="navbar-left">
+            <img alt="The Weidon" src="@Url.Content("~/Content/Images/Logo_Small.png")" height="70" />
+        </a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        @*</div>*@
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("The Weidon", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                @*@Html.ActionLink("The Weidon", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                @*<a href="@Url.Action("Index", "Home", "")" title="List View" class="navbar-brand">
+                    <img alt="The Weidon" src="@Url.Content("~/Content/Images/Logo_Small.png")" class="img-responsive">
+                </a>*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -27,8 +37,8 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("List of Greek deities", "Index", "ListDeities", new { IdMythology = 1 }, new { @class = "dropdown-item"})</li>
-                            <li>@Html.ActionLink("List of Greek myths", "Index", "ListMyths", new { IdMythology = 1 }, new { @class = "dropdown-item"})</li>
+                            <li>@Html.ActionLink("List of Greek deities", "Index", "ListDeities", new { IdMythology = 1 }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("List of Greek myths", "Index", "ListMyths", new { IdMythology = 1 }, new { @class = "dropdown-item" })</li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -37,8 +47,8 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("List of Roman deities", "Index", "ListDeities", new { IdMythology = 2 }, new { @class = "dropdown-item"})</li>
-                            <li>@Html.ActionLink("List of Roman myths", "Index", "ListMyths", new { IdMythology = 2 }, new { @class = "dropdown-item"})</li>
+                            <li>@Html.ActionLink("List of Roman deities", "Index", "ListDeities", new { IdMythology = 2 }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("List of Roman myths", "Index", "ListMyths", new { IdMythology = 2 }, new { @class = "dropdown-item" })</li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -47,8 +57,8 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("List of Norse deities", "Index", "ListDeities", new { IdMythology = 3 }, new { @class = "dropdown-item"})</li>
-                            <li>@Html.ActionLink("List of Norse myths", "Index", "ListMyths", new { IdMythology = 3 }, new { @class = "dropdown-item"})</li>
+                            <li>@Html.ActionLink("List of Norse deities", "Index", "ListDeities", new { IdMythology = 3 }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("List of Norse myths", "Index", "ListMyths", new { IdMythology = 3 }, new { @class = "dropdown-item" })</li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -97,10 +107,10 @@
                 </ul>*@
 
                 @*</ul>
-        @Html.Partial("_LoginPartial")*@
+                @Html.Partial("_LoginPartial")*@
             </div>
         </div>
-    </div>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />

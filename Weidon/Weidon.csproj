@@ -194,6 +194,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\GreekMythologyCard.jpg" />
+    <Content Include="Content\Images\Logo_Icon.ico" />
+    <Content Include="Content\Images\Logo_Image_Behind_Transparent.png" />
+    <Content Include="Content\Images\Logo_Name.png" />
+    <Content Include="Content\Images\Logo_Name_Behind.png" />
+    <Content Include="Content\Images\Logo_Name_Behind_Transparent.png" />
+    <Content Include="Content\Images\Logo_Small.png" />
+    <Content Include="Content\Images\Logo_Small_100.png" />
+    <Content Include="Content\Images\Logo_Small_Transparent.png" />
     <Content Include="Content\Images\NorseMythologyCard.png" />
     <Content Include="Content\Images\RomanMythologyCard.png" />
     <Content Include="favicon.ico" />
