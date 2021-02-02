@@ -193,7 +193,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Images\GreekMythologyCard.jpg" />
+    <Content Include="Content\Images\GreekMythologyCard.png" />
     <Content Include="Content\Images\Logo_Icon.ico" />
     <Content Include="Content\Images\Logo_Image_Behind_Transparent.png" />
     <Content Include="Content\Images\Logo_Name.png" />

@@ -16,6 +16,7 @@ namespace Weidon.Controllers
             var vm = new MythologyViewModel();
             using (var context = new WeidonDbEntities())
             {
+                var images = context.MythologyImages.ToList();
                 var mythologies = context.Mythology.ToList();
                 List<int> ids = (from Mythology in mythologies
                                  select Mythology.Id).ToList();
@@ -23,10 +24,13 @@ namespace Weidon.Controllers
                                       select Mythology.Name).ToList();
                 List<string> contents = (from Mythology in mythologies
                                          select Mythology.Content).ToList();
+                List<string> imagePaths = (from Image in images
+                                           select Image.ImagePath).ToList();
                 vm.ListIds = ids;
                 vm.ListNames = names;
                 vm.ListContents = contents;
                 vm.ListMythologies = mythologies;
+                vm.ListImagepaths = imagePaths;
             }
             //var context = new WeidonDbEntities();
             //var mythologies = context.Mythology.ToList();

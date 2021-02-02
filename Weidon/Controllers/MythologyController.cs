@@ -16,14 +16,16 @@ namespace Weidon.Controllers
         {
             var vm = new MythologyViewModel();
             using (var context = new WeidonDbEntities())
-            { 
+            {
                 var mythology = context.Mythology.FirstOrDefault(m => m.Name == name);
+                var image = context.MythologyImages.FirstOrDefault(i => i.IdMythology == mythology.Id);
                 //var mythology = mythologies.FirstOrDefault(m => m.Id == id);
                 vm.Id = mythology.Id;
                 vm.Name = mythology.Name;
                 vm.Content = mythology.Content;
                 vm.Area = mythology.Area;
                 vm.Mythology = mythology;
+                vm.ImagePath = image;
             }
             return View(vm);
         }

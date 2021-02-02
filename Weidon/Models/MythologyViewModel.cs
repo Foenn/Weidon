@@ -17,5 +17,7 @@ namespace Weidon.Models
         public string Content { get; internal set; }
         public Mythology Mythology { get; internal set; }
         public string Area { get; internal set; }
+        public List<string> ListImagepaths { get; internal set; }
+        public MythologyImages ImagePath { get; internal set; }
     }
 }
