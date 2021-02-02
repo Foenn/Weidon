@@ -10,11 +10,11 @@
 </div>*@
 
 <div class="text-center">
-    <img alt="The Weidon" src="@Url.Content("~/Content/Images/Logo_Name_Behind.png")" class="rounded"/> 
+    <img alt="The Weidon" src="@Url.Content("~/Content/Images/Logo_Name_Behind_Transparent.png")" class="rounded"/> 
 </div>
 
 <div class="container">
-    @foreach (var mythology in Model.ListMythologies)
+    @*@foreach (var mythology in Model.ListMythologies)
     {
         <div class="card col-md-4">
             <img class="card-img-top img-thumbnail" src="@Url.Content("~/Content/Images/RomanMythologyCard.png")" alt="Card image">
@@ -24,17 +24,30 @@
                 @Html.ActionLink("See More", "Infos", "Mythology", new { name = mythology.Name }, new { @class = "btn btn-primary" })
             </div>
         </div>
+    }*@
+
+    @for (int i = 0; i<Model.ListIds.Count(); i++)
+    {
+        <div class="card col-md-4 text-center">
+            <img class="card-img-top img-thumbnail" src="@Url.Content("~/Content/Images/" + Model.ListImagepaths[i])" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">@Model.ListNames[i]</h4>
+                <p class="card-text">@Model.ListContents[i]</p>
+                @Html.ActionLink("See More", "Infos", "Mythology", new { name = @Model.ListNames[i] }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
     }
 
 </div>
 
-@foreach (var mythology in Model.ListMythologies)
+@*@foreach (var mythology in Model.ListMythologies)
 {
     <p>@mythology.Name</p>
     <br />
     <p>@mythology.Content</p>
     <br />
-}
+    <p>@mythology</p>
+}*@
 
 
 

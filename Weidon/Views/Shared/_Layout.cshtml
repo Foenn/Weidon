@@ -10,10 +10,10 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-md">
+    <nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-md" style="background-color:#545454;">
         @*<div class="container">*@
         <a href="@Url.Action("Index", "Home")" title="List View" class="navbar-left">
-            <img alt="The Weidon" src="@Url.Content("~/Content/Images/Logo_Small.png")" height="70" />
+            <img alt="The Weidon" src="@Url.Content("~/Content/Images/Logo_Small_Transparent.png")" height="70" />
         </a>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
@@ -111,11 +111,11 @@
             </div>
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="container body-content" style="background-color:#222;">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - The Weidon</p>
         </footer>
     </div>
 
