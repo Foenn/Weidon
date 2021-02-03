@@ -34,13 +34,13 @@ namespace Weidon
             routes.MapRoute(
                 name: "listdeities",
                 url: "ListDeities/{IdMythology}",
-                defaults: new { controller = "ListDeities", action = "Index" }
+                defaults: new { controller = "ListDeities", action = "Index", IdMythology = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 name: "listmyths",
                 url: "ListMyths/{IdMythology}",
-                defaults: new { controller = "ListMyths", action = "Index" }
+                defaults: new { controller = "ListMyths", action = "Index", IdMythology = UrlParameter.Optional }
             );
 
             routes.MapRoute(
