@@ -13,37 +13,41 @@ namespace Weidon.Controllers
     {
         public ActionResult Index()
         {
-            var vm = new MythologyViewModel();
-            using (var context = new WeidonDbEntities())
+            try
             {
-                var images = context.MythologyImages.ToList();
-                var mythologies = context.Mythology.ToList();
-                List<int> ids = (from Mythology in mythologies
-                                 select Mythology.Id).ToList();
-                List<string> names = (from Mythology in mythologies
-                                      select Mythology.Name).ToList();
-                List<string> contents = (from Mythology in mythologies
-                                         select Mythology.Content).ToList();
-                List<string> imagePaths = (from Image in images
-                                           select Image.ImagePath).ToList();
-                vm.ListIds = ids;
-                vm.ListNames = names;
-                vm.ListContents = contents;
-                vm.ListMythologies = mythologies;
-                vm.ListImagepaths = imagePaths;
+                var vm = new MythologyViewModel();
+                using (var context = new WeidonDbEntities())
+                {
+                    var images = context.MythologyImages.ToList();
+                    var mythologies = context.Mythology.ToList();
+                    if (mythologies.Count > 0)
+                    {
+                        List<int> ids = (from Mythology in mythologies
+                                         select Mythology.Id).ToList();
+                        List<string> names = (from Mythology in mythologies
+                                              select Mythology.Name).ToList();
+                        List<string> contents = (from Mythology in mythologies
+                                                 select Mythology.Content).ToList();
+                        List<string> imagePaths = (from Image in images
+                                                   select Image.ImagePath).ToList();
+                        vm.ListIds = ids;
+                        vm.ListNames = names;
+                        vm.ListContents = contents;
+                        vm.ListMythologies = mythologies;
+                        vm.ListImagepaths = imagePaths;
+                    }
+                    else
+                    {
+                        throw new Exception("Query result does not contain any data.");
+                    }
+                }
+                return View(vm);
             }
-            //var context = new WeidonDbEntities();
-            //var mythologies = context.Mythology.ToList();
-            ////var fm = new MythologyManager();
-            ////var mythologies = fm.GetMythologies();
-            //List<string> names = (from Mythology in mythologies
-            //                      select Mythology.Name).ToList();
-            //List<string> contents = (from Mythology in mythologies
-            //                         select Mythology.Content).ToList();
-            //vm.Names = names;
-            //vm.Contents = contents;
-            //vm.Mythologies = mythologies;
-            return View(vm);
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                return View("Error");
+            }
         }
 
         public ActionResult About()
